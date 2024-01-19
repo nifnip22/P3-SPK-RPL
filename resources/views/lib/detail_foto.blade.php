@@ -5,10 +5,12 @@
         <h1 class="text-xl font-bold mb-8"><i class="fa-solid fa-chevron-left"></i> Kembali ke Galleri</h1>
     </a>
     <div class="flex flex-col lg:flex-row items-center justify-center gap-4 mb-10">
-        <div class="card w-96 bg-base-200 border-4 border-success" data-aos="fade-right">
-            <img src="{{ asset('assets/data_foto/' . $foto->lokasi_file) }}"
-                class="rounded-xl max-w-full h-auto object-cover">
-        </div>
+        <a>
+            <div class="card w-96 bg-base-200 border-4 border-success" data-aos="fade-right">
+                <img src="{{ asset('assets/data_foto/' . $foto->lokasi_file) }}"
+                    class="rounded-xl max-w-full h-auto object-cover">
+            </div>
+        </a>
         <div class="bg-base-200 w-full rounded-xl p-6" data-aos="fade-left">
             <h1 class="text-3xl md:text-4xl font-bold mb-4">{{ $foto->judul_foto }}</h1>
             <p class="text-xl md:text-2xl font-medium mb-8">{{ $foto->deskripsi_foto }}</p>
@@ -38,42 +40,26 @@
                             },
                             success: function(response) {
                                 if (response.status === 'liked') {
-                                    const Toast = Swal.mixin({
-                                        toast: true,
-                                        position: 'bottom',
-                                        showConfirmButton: false,
-                                        timer: 3000,
-                                        timerProgressBar: true,
-                                        didOpen: (toast) => {
-                                            toast.addEventListener('mouseenter', Swal.stopTimer);
-                                            toast.addEventListener('mouseleave', Swal.resumeTimer);
-                                        }
-                                    });
-
-                                    Toast.fire({
-                                        icon: 'success',
-                                        title: 'Foto di Sukai!'
-                                    });
+                                    new Noty({
+                                        text: '<i class="fa-solid fa-heart mr-2"></i> Foto di Sukai!',
+                                        theme: 'sunset',
+                                        type: 'error',
+                                        layout: 'bottomRight',
+                                        timeout: 3000,
+                                        progressBar: true,
+                                    }).show();
 
                                     $('#like-icon').removeClass('far').addClass('fas');
                                     likedStatus = 'liked';
                                 } else if (response.status === 'unliked') {
-                                    const Toast = Swal.mixin({
-                                        toast: true,
-                                        position: 'bottom',
-                                        showConfirmButton: false,
-                                        timer: 3000,
-                                        timerProgressBar: true,
-                                        didOpen: (toast) => {
-                                            toast.addEventListener('mouseenter', Swal.stopTimer);
-                                            toast.addEventListener('mouseleave', Swal.resumeTimer);
-                                        }
-                                    });
-
-                                    Toast.fire({
-                                        icon: 'success',
-                                        title: 'Foto Batal di Sukai!'
-                                    });
+                                    new Noty({
+                                        text: '<i class="fa-solid fa-heart-crack mr-2"></i> Foto Batal di Sukai!',
+                                        theme: 'sunset',
+                                        type: 'error',
+                                        layout: 'bottomRight',
+                                        timeout: 3000,
+                                        progressBar: true,
+                                    }).show();
 
                                     $('#like-icon').removeClass('fas').addClass('far');
                                     likedStatus = 'unliked';
@@ -166,7 +152,8 @@
     </div>
     <div class="bg-base-200 w-full p-6 rounded-xl" data-aos="fade-up" data-aos-delay="400">
         <h2 class="text-xl md:text-2xl font-bold mb-3">Komentar</h2>
-        <p class="text-sm md:text-md mb-6">Ada <span class="font-bold">{{ $komentarCount }}</span> Komentar di Foto ini, Anda juga Bisa
+        <p class="text-sm md:text-md mb-6">Ada <span class="font-bold">{{ $komentarCount }}</span> Komentar di Foto ini,
+            Anda juga Bisa
             Berkomentar pada Foto ini</p>
 
         <form id="komentarForm" action="{{ route('komentar.store') }}" method="POST"
@@ -177,7 +164,7 @@
             <input type="text" name="foto_id" placeholder="Foto" class="input input-bordered w-full"
                 value="{{ $foto->id }}" hidden />
             <textarea name="isi_komentar" rows="2"
-                class="w-full rounded-xl ring-2 ring-gray-300 focus:ring-green-600 outline-none p-3"></textarea>
+                class="w-full rounded-xl ring-2 ring-gray-300 focus:ring-green-600 outline-none p-3" required></textarea>
             <button class="btn btn-success text-gray-100 flex"><i class="fa fa-paper-plane"></i></button>
         </form>
 
@@ -194,22 +181,14 @@
         {{-- Komentar SweetAlert2 --}}
         @if (session('komentar'))
             <script>
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'bottom',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer);
-                        toast.addEventListener('mouseleave', Swal.resumeTimer);
-                    }
-                });
-
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Komentar Anda Telah Terkirim'
-                });
+                new Noty({
+                    text: '<i class="fa-solid fa-message mr-2"></i> Komentar Anda Telah Terkirim!',
+                    theme: 'sunset',
+                    type: 'alert',
+                    layout: 'bottomRight',
+                    timeout: 3000,
+                    progressBar: true,
+                }).show();
             </script>
         @endif
     </div>
