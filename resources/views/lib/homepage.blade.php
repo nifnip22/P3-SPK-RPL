@@ -41,11 +41,11 @@
                     Lainnya <i class="fa-solid fa-arrow-right"></i></button>
             </div>
         @else
-            <div class="mb-12 flex flex-col gap-y-10 justify-center items-center" data-aos="fade-up">
+            <div class="mb-12 mt-32 flex flex-col gap-y-10 justify-center items-center" data-aos="fade-up">
                 <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold opacity-30">
                     Anda Belum Memiliki Foto
                 </h1>
-                <button class="btn btn-success text-gray-100 hover:scale-110 duration-300" onclick="redirectToFoto()" data-aos="fade-up"
+                <button class="btn btn-success text-gray-100 hover:scale-110 duration-300 mb-32" onclick="redirectToFoto()" data-aos="fade-up"
                     data-aos-delay="200">Unggah Foto <i class="fa-solid fa-arrow-right"></i></button>
             </div>
         @endif
@@ -80,11 +80,11 @@
                     Lainnya <i class="fa-solid fa-arrow-right"></i></button>
             </div>
         @else
-            <div class="mb-12 flex flex-col gap-y-10 justify-center items-center" data-aos="fade-up">
+            <div class="mb-12 mt-32 flex flex-col gap-y-10 justify-center items-center" data-aos="fade-up">
                 <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold opacity-30">
                     Anda Belum Memiliki Album
                 </h1>
-                <button class="btn btn-primary text-gray-100 hover:scale-110 duration-300" onclick="redirectToAlbum()" data-aos="fade-up"
+                <button class="btn btn-primary text-gray-100 hover:scale-110 duration-300 mb-32" onclick="redirectToAlbum()" data-aos="fade-up"
                     data-aos-delay="200">Buat Album <i class="fa-solid fa-arrow-right"></i></button>
             </div>
         @endif
