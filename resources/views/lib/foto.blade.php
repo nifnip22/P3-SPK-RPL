@@ -43,7 +43,8 @@
             </div>
         </dialog>
     </div>
-    <div class="grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 md:gap-x-8 xl:gap-x-20 gap-y-10" data-aos="fade-up" data-aos-delay="300">
+    @if ($foto->isNotEmpty())
+    <div class="mb-10 grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 md:gap-x-8 xl:gap-x-20 gap-y-10" data-aos="fade-up" data-aos-delay="300">
         @foreach ($foto as $f)
             <a href="{{ route('foto.show', ['foto' => $f->id]) }}" class="flex items-center justify-center">
                 <div
@@ -56,6 +57,12 @@
             </a>
         @endforeach
     </div>
+    @else
+    <div class="message" data-aos="fade-up" data-aos-delay="700">
+        <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold opacity-30 text-center mt-28 mb-28">Tekan Tombol Tambah Foto untuk Mengunggah Foto</h1>
+    </div>
+    @endif
+
     {{-- Delete SweetAlert --}}
     @if (session('delete_success'))
         <script>
