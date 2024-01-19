@@ -43,7 +43,7 @@
                     <h2 class="card-title font-bold text-ellipsis">{{ $a->nama_album }}</h2>
                     <p class="font-semibold">{{ $a->deskripsi }}</p>
                     <p><span class="font-bold">{{ $a->foto_count }}</span> Foto
-                    <p>{{ $a->created_at }}</p>
+                    {{-- <p>{{ $a->created_at->format('d/M/Y') }}</p> --}}
                 </div>
             </div>
         </a>

@@ -119,6 +119,8 @@ class FotoController extends Controller
     {
         $foto = Foto::findOrFail($id);
 
+        $foto->komentarFoto()->delete();
+
         $filePath = public_path('assets/data_foto/' . $foto->lokasi_file);
         if (file_exists($filePath)) {
             unlink($filePath);

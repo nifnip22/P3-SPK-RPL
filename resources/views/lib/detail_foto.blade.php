@@ -8,21 +8,21 @@
         <a>
             <div class="card w-96 bg-base-200 border-4 border-success" data-aos="fade-right">
                 <img src="{{ asset('assets/data_foto/' . $foto->lokasi_file) }}"
-                    class="rounded-xl max-w-full h-auto object-cover">
+                    class="rounded-xl max-w-full h-auto object-cover" draggable="false">
             </div>
         </a>
         <div class="bg-base-200 w-full rounded-xl p-6" data-aos="fade-left">
             <h1 class="text-3xl md:text-4xl font-bold mb-4">{{ $foto->judul_foto }}</h1>
-            <p class="text-xl md:text-2xl font-medium mb-8">{{ $foto->deskripsi_foto }}</p>
+            <p class="text-xl md:text-2xl font-medium bg-white p-3 rounded-xl mb-8">{{ $foto->deskripsi_foto }}</p>
             <h2 class="text-lg md:text-xl font-bold mb-4">Detail Lebih Lanjut:</h2>
             <p class="text-md md:text-lg font-medium mb-2"><i class="fa fa-user"></i> <span
                     class="font-semibold">{{ $foto->user->name }}</span></p>
             <p class="text-md md:text-lg font-medium mb-2"><i class="fa fa-images"></i> <span
                     class="font-semibold">{{ $foto->album ? $foto->album->nama_album : 'Tidak Ada Album' }}</span></p>
             <p class="text-md md:text-lg font-medium mb-8"><i class="fa fa-calendar"></i> <span
-                    class="font-semibold">{{ $foto->created_at }}</span></p>
+                    class="font-semibold">{{ $foto->created_at->format('d/M/Y') }}</span></p>
             <h2 class="text-lg md:text-xl font-bold mb-4">Opsi:</h2>
-            <div class="flex items-center gap-x-3">
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-4">
                 <button class="btn btn-secondary text-white" onclick="toggleLike()" data-foto-id="{{ $foto->id }}">
                     <i id="like-icon" class="{{ $likedStatus === 'liked' ? 'fas' : 'far' }} fa-heart"></i> Suka
                 </button>
@@ -171,8 +171,8 @@
         @foreach ($komentar as $k)
             <div id="daftarKomentar" class="mb-5">
                 <div class="bg-white w-full p-4 rounded-xl">
-                    <h2 class="text-lg font-bold mb-3">{{ $k->user->name }} <span
-                            class="text-sm font-normal">{{ $k->created_at }}</span>
+                    <h2 class="text-lg text-success font-bold mb-3">{{ $k->user->name }} <span
+                            class="text-sm font-normal">{{ $k->created_at->format('d/M/Y') }}</span>
                     </h2>
                     <p class="text-md font-semibold">{{ $k->isi_komentar }}</p>
                 </div>

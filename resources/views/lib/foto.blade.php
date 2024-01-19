@@ -50,7 +50,7 @@
                     class="card w-40 sm:w-60 md:w-80 bg-base-100 border-4 border-gray-300 hover:border-success hover:shadow-xl hover:scale-105 duration-300">
                     <figure>
                         <img src="{{ asset('assets/data_foto/' . $f->lokasi_file) }}"
-                            class="rounded-xl w-full h-40 sm:h-60 md:h-80 object-cover" />
+                            class="rounded-xl w-full h-40 sm:h-60 md:h-80 object-cover" draggable="false"/>
                     </figure>
                 </div>
             </a>
